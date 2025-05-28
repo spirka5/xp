@@ -1,3 +1,4 @@
+from
 class GeneralisedRomanNumber:
     def __init__(self, letters):
         if not self.are_letters_valid(letters):
@@ -47,3 +48,4 @@ class GeneralisedRomanNumber:
     # Pokiaľ hodnota ešte nebola nastavená, vráti 0.
     def getValue(self):
         return 0
+
