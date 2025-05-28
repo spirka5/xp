@@ -1,4 +1,7 @@
-from skuska import romanToInteger
+import unittest
+from skuska import romanToInteger, is_number_valid
+
+WRONG_NUMBER = -9999
 
 
 def tests():
@@ -62,5 +65,79 @@ def tests():
     assert romanToInteger("IVXLCDM", "ABC") == -9999
 
 
+class MyTestCase(unittest.TestCase):
+    def test_1_checkOne(self):
+        self.assertEqual(1, romanToInteger("IVXLCDM", "I"))
+
+    def test_2_checkFour(self):
+        self.assertEqual(4, romanToInteger("IVXLCDM", "IV"))
+
+    def test_3_smallCharacters(self):
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "ii"))
+
+    def test_4_wrongNumberOrder(self):
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "IVI"))
+
+    def test_5_checkZlyZapis(self):
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "IC"))
+
+    def test_6_invalidInputs(self):
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "IIIIIX"))
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "IC"))
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "VX"))
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "XDX"))
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "IL"))
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "MMMMM"))
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "CMCM"))
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "XIC"))
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "XCX"))
+        self.assertEqual(-9999, romanToInteger("IVXLCDM", "ICX"))
+
+    def test_7_validInputs(self):
+        self.assertEqual(14, romanToInteger("IVXLCDM", "XIV"))
+        self.assertEqual(29, romanToInteger("IVXLCDM", "XXIX"))
+        self.assertEqual(144, romanToInteger("IVXLCDM", "CXLIV"))
+        self.assertEqual(390, romanToInteger("IVXLCDM", "CCCXC"))
+
+    def test_8_iiv(self):
+        self.assertEqual(WRONG_NUMBER, romanToInteger("IVXLCDM", "IIV"))
+        self.assertEqual(WRONG_NUMBER, romanToInteger("IVXLCDM", "CCCLXL"))
+
+    def test_9_teachersTests(self):
+        self.assertEqual(romanToInteger("IVXLCDM", "MMMCMXCIX"), 3999, "Should be 3999")
+        self.assertEqual(999, romanToInteger("IVXLCDM", "CMXCIX"))
+        self.assertEqual(romanToInteger("IVXLCDM", "MMCDXCIX"), 2499)
+        self.assertEqual(WRONG_NUMBER, romanToInteger("IVXLCDM", "LXL"))
+        self.assertEqual(WRONG_NUMBER, romanToInteger("IVXLCDM", 9))
+        self.assertEqual(89, romanToInteger("IVXLCDM", "LXXXIX"))
+
+    def test_10_invalidRomanLetter(self):
+        self.assertEqual(is_number_valid(" "), False)
+        self.assertEqual(is_number_valid("a"), False)
+        self.assertEqual(is_number_valid("!!"), False)
+        self.assertEqual(is_number_valid("ABB"), False)
+        self.assertEqual(is_number_valid("OOJ"), False)
+        self.assertEqual(is_number_valid(2), False)
+
+    def test_11_invalidRomanLetter(self):
+        self.assertEqual(is_number_valid("A"), True)
+        self.assertEqual(is_number_valid("IXY"), True)
+        self.assertEqual(is_number_valid("ABC"), True)
+        self.assertEqual(is_number_valid("YURE"), True)
+
+    def test_13_teachersTest2(self):
+        self.assertEqual(romanToInteger("IV", "VIII"), 8)
+        self.assertEqual(romanToInteger("A", "AAA"), 3)
+        self.assertEqual(romanToInteger("I", "IV"), -9999)
+        self.assertEqual(romanToInteger("IVXL", "LXXXIX"), 89)
+        self.assertEqual(romanToInteger("IAVXLCQDM", "QVA"), 1015)
+        self.assertEqual(romanToInteger("IVXLCDMPQRS", "SSS"), 300000)
+        self.assertEqual(romanToInteger("'", "IV"), -9999)
+        self.assertEqual(romanToInteger("IVXLX", "IV"), -9999)
+        self.assertEqual(romanToInteger("IV", ""), -9999)
+        self.assertEqual(romanToInteger("12345", "12"), -9999)
+
+
 if __name__ == "__main__":
     tests()
+    unittest.main()
