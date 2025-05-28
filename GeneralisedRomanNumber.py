@@ -12,13 +12,17 @@ class GeneralisedRomanNumber:
         self.minusSign = letters[0]
         self.zeroSign = letters[1]
         self.letters = letters[2:]
+        self.romanNumber = 0
 
     def are_letters_valid(self, letters):
         if len(letters) < 3:
             return False
 
-        for letter in letters:
-            if not ("A" <= letter <= "Z" or letter == "-"):
+        if not ('A' <= letters[0] <= 'Z' or letters[0] == '-'):
+            return False
+
+        for letter in letters[1:]:
+            if not ('A' <= letter <= 'Z'):
                 return False
 
         if len(letters) != len(set(letters)):
@@ -62,12 +66,31 @@ class GeneralisedRomanNumber:
     # Inak vloží číslo do členskej premennej triedy.
     # Napr. "O", "IV", "CCC", "-LXI", "-XI"
     def setRomanNumber(self, romanNumber):
-        self.letters = romanNumber
+        if not romanNumber:
+            return False
+
+        value = 1
+        if romanNumber[0] == self.minusSign:
+            value = -1
+            romanNumber = romanNumber[1:]
+
+        if romanNumber[0] == self.zeroSign:
+            if len(romanNumber) == 1:
+                return 0
+            else:
+                return False
+
+        intFromRoman = s.romanToInteger(self.letters, romanNumber)
+
+        if intFromRoman == -9999:
+            return False
+
+        self.romanNumber = value * intFromRoman
 
     # Metóda vráti číselnú hodnotu členskej premennej.
     # Pokiaľ hodnota ešte nebola nastavená, vráti 0.
     def getValue(self):
-        return 0
+        return self.romanNumber
 
 roman = GeneralisedRomanNumber("-O")
 print(roman.getRomanLetters())
