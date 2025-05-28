@@ -28,13 +28,37 @@ def get_value_of_char(roman_letters, char):
     return value
 
 
-def is_char_valid(roman_letters, char, prev_char, char_count):
+def is_char_valid(roman_letters, char, prev_char, prev_prev_char, char_count):
     if char not in roman_letters:
         return False, INVALID
 
     if char != prev_char:
         char_count = 0
     char_count += 1
+
+    if prev_prev_char:
+        char_value = get_value_of_char(roman_letters, char)
+        prev_char_value = get_value_of_char(roman_letters, prev_char)
+        prev_prev_char_value = get_value_of_char(roman_letters, prev_prev_char)
+
+        char_index = roman_letters.index(char)
+
+        # Same, different, same
+        if char_index % 2 == 1 and char == prev_prev_char and prev_char != char :
+            return False, INVALID
+
+        # small, biggest, big
+        # small, bigSame, bigSame
+        if char_value < prev_char_value and prev_char_value >= prev_prev_char_value and char_value < prev_prev_char_value:
+            return False, INVALID
+
+    if prev_char:
+        char_index = roman_letters.index(char)
+        prev_char_index = roman_letters.index(prev_char)
+        if char_index % 2 == 1 and char_index == prev_char_index:
+            return False, INVALID
+
+
 
     if char_count > 3:
         return False, INVALID
@@ -57,7 +81,7 @@ def romanToInteger(romanLetters, romanNumber):
     for index in range(len(romanNumber) - 1, -1, -1):
         char = romanNumber[index]
 
-        is_valid, char_count = is_char_valid(romanLetters, char, prev_char, char_count)
+        is_valid, char_count = is_char_valid(romanLetters, char, prev_char, prev_prev_char, char_count)
         if not is_valid:
             return INVALID
 
