@@ -1,4 +1,3 @@
-from
 class GeneralisedRomanNumber:
     def __init__(self, letters):
         if not self.are_letters_valid(letters):
@@ -14,7 +13,7 @@ class GeneralisedRomanNumber:
             return False
 
         for letter in letters:
-            if not ('A' <= letter <= 'Z' or letter == '-'):
+            if not ("A" <= letter <= "Z" or letter == "-"):
                 return False
 
         if len(letters) != len(set(letters)):
@@ -30,6 +29,7 @@ class GeneralisedRomanNumber:
     # písmen rímskej abecedy napísať. Napr. 3999
     def maximum(self):
         return 0
+
     # Metóda vráti najmenšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. -3999
     def minimum(self):
@@ -48,4 +48,3 @@ class GeneralisedRomanNumber:
     # Pokiaľ hodnota ešte nebola nastavená, vráti 0.
     def getValue(self):
         return 0
-
