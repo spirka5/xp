@@ -37,7 +37,7 @@ class GeneralisedRomanNumber:
     # Metóda vráti najmenšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. -3999
     def minimum(self):
-        return 0
+        return -self.maximum()
 
     # Ak je romanNumber prázdny reťazec, metóda neurobí nič a vráti false.
     # Inak metóda skontroluje, či je romanNumber korektné rímske číslo
