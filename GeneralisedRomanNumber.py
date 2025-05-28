@@ -1,5 +1,5 @@
 import skuska as s
-
+import math
 
 DEFAULT_LETTERS = "-OIVXLCDM"
 
@@ -97,7 +97,7 @@ class GeneralisedRomanNumber:
 
     # Metóda vloží vstupné číslo do členskej premennej triedy, ak je číslo z povoleného intervalu <min, max> a vráti true. Inak iba vráti false.
     def setValue(self, value):
-        if self.minimum() > value > self.maximum():
+        if self.minimum() < value < self.maximum():
             self.arabNumber = value
             return True
         return False
@@ -111,3 +111,4 @@ roman = GeneralisedRomanNumber("-O")
 print(roman.getRomanLetters())
 print(roman.letters)
 print(roman.minimum())
+roman.int_to_roman(8000)
