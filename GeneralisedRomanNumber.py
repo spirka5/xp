@@ -33,10 +33,21 @@ class GeneralisedRomanNumber:
     # Metóda vráti najväčšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. 3999
     def maximum(self):
-        max_number = (
-            s.get_value_of_char(self.letters, self.letters[len(self.letters) - 1]) * 4
-            - 1
-        )
+        index = len(self.letters) - 1 % 2
+        if index == 0:
+            max_number = (
+                s.get_value_of_char(self.letters, self.letters[len(self.letters) - 1])
+                * 4
+                - 1
+            )
+        else:
+            max_number = (
+                s.get_value_of_char(self.letters, self.letters[len(self.letters) - 2])
+                * 4
+                - 1
+                + s.get_value_of_char(self.letters, self.letters[len(self.letters) - 1])
+            )
+
         return max_number
 
     # Metóda vráti najmenšie číslo, ktoré sa dá z daných
