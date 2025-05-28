@@ -5,7 +5,7 @@ DEFAULT_LETTERS = "-OIVXLCDM"
 
 
 class GeneralisedRomanNumber:
-    def __init__(self, letters):
+    def __init__(self, letters=DEFAULT_LETTERS):
         if not self.are_letters_valid(letters):
             letters = DEFAULT_LETTERS
 
@@ -33,8 +33,8 @@ class GeneralisedRomanNumber:
     # Metóda vráti najväčšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. 3999
     def maximum(self):
-        index = len(self.letters) - 1 % 2
-        if index == 0:
+        index = len(self.letters) - 1
+        if index % 2 == 0:
             max_number = (
                 s.get_value_of_char(self.letters, self.letters[len(self.letters) - 1])
                 * 4
@@ -68,3 +68,8 @@ class GeneralisedRomanNumber:
     # Pokiaľ hodnota ešte nebola nastavená, vráti 0.
     def getValue(self):
         return 0
+
+roman = GeneralisedRomanNumber("-O")
+print(roman.getRomanLetters())
+print(roman.letters)
+print(roman.minimum())
