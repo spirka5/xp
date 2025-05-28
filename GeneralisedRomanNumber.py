@@ -1,9 +1,8 @@
-from
+DEFAULT_LETTERS = "-OIVXLCDM"
 class GeneralisedRomanNumber:
     def __init__(self, letters):
         if not self.are_letters_valid(letters):
-            print("Invalid input")
-            return
+            letters = DEFAULT_LETTERS
 
         self.minusSign = letters[0]
         self.zeroSign = letters[1]
@@ -24,7 +23,7 @@ class GeneralisedRomanNumber:
 
     # Vráti zoznam rímskych písmen včítane mínus a nuly, napr. "-OIVXLCDM"
     def getRomanLetters(self):
-        return self.letters
+        return self.minusSign + self.zeroSign + self.letters
 
     # Metóda vráti najväčšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. 3999
