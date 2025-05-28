@@ -13,9 +13,15 @@ def are_letters_valid(roman_letters):
 
 
 def is_number_valid(roman_number):
-    if type(roman_number) == int:
+    if not isinstance(roman_number, str):
         return False
-    if not roman_number:
+    if len(roman_number) == 0:
+        return False
+    for letter in roman_number:
+        if letter < "A" or letter > "Z":
+            return False
+    lettersSet = set(roman_number)
+    if len(lettersSet) != len(roman_number):
         return False
     return True
 
