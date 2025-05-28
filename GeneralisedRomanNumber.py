@@ -13,6 +13,7 @@ class GeneralisedRomanNumber:
         self.zeroSign = letters[1]
         self.letters = letters[2:]
         self.arabNumber = 0
+        self.romanNumber = ""
 
     def are_letters_valid(self, letters):
         if len(letters) < 3:
@@ -66,6 +67,7 @@ class GeneralisedRomanNumber:
     # Inak vloží číslo do členskej premennej triedy.
     # Napr. "O", "IV", "CCC", "-LXI", "-XI"
     def setRomanNumber(self, romanNumber):
+        ogRomanNumber = romanNumber
         if not romanNumber:
             return False
 
@@ -86,6 +88,7 @@ class GeneralisedRomanNumber:
             return False
 
         self.arabNumber = value * intFromRoman
+        self.romanNumber = ogRomanNumber
 
     # Metóda vráti číselnú hodnotu členskej premennej.
     # Pokiaľ hodnota ešte nebola nastavená, vráti 0.
@@ -100,7 +103,8 @@ class GeneralisedRomanNumber:
         return False
 
     # Metóda vráti hodnotu členskej premennej ako rímske číslo.
-    def getRomanNumber(self): ...
+    def getRomanNumber(self):
+        return self.romanNumber
 
 
 roman = GeneralisedRomanNumber("-O")
