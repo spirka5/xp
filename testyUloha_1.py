@@ -1,10 +1,9 @@
 import unittest
-from riesenie2025 import GeneralisedRomanNumber
+from GeneralisedRomanNumber import GeneralisedRomanNumber
 
 
 # 1.uloha
 class Test1(unittest.TestCase):
-
     # Roman letters
     def test_Alphabet_I(self):
         roman = GeneralisedRomanNumber("-OI")
@@ -229,7 +228,7 @@ class Test1(unittest.TestCase):
         roman = GeneralisedRomanNumber("-OIVXL")
         roman.setRomanNumber("XLIX")
         self.assertEqual(roman.getValue(), 49)
-    
+
     def test_newTest7(self):
         roman = GeneralisedRomanNumber("-OABC")
         roman.setRomanNumber("BB")
@@ -292,5 +291,5 @@ class Test1(unittest.TestCase):
             self.assertEqual(roman.getRomanNumber(), "YWUSSSRMMMXLVII")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
