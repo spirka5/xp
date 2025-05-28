@@ -1,10 +1,30 @@
 class GeneralisedRomanNumber:
     def __init__(self, letters):
-        self.letters = letters
+        if not self.are_letters_valid(letters):
+            print("Invalid input")
+            return
+
+        self.minusSign = letters[0]
+        self.zeroSign = letters[1]
+        self.letters = letters[2:]
+
+    def are_letters_valid(self, letters):
+        if len(letters) < 3:
+            return False
+
+        for letter in letters:
+            if not ('A' <= letter <= 'Z' or letter == '-'):
+                return False
+
+        if len(letters) != len(set(letters)):
+            return False
+
+        return True
 
     # Vráti zoznam rímskych písmen včítane mínus a nuly, napr. "-OIVXLCDM"
     def getRomanLetters(self):
         return self.letters
+
     # Metóda vráti najväčšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. 3999
     def maximum(self):
