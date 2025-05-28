@@ -1,5 +1,5 @@
 import unittest
-from riesenie2025 import GeneralisedRomanNumber
+from GeneralisedRomanNumber import GeneralisedRomanNumber
 
 
 # 2.uloha
@@ -224,5 +224,5 @@ class Test2(unittest.TestCase):
             self.assertEqual(roman.getRomanNumber(), "YWUSSSRMMMXLVII")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
