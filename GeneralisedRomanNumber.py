@@ -1,5 +1,6 @@
-DEFAULT_LETTERS = "-OIVXLCDM"
 from skuska import romanToInteger
+
+DEFAULT_LETTERS = "-OIVXLCDM"
 
 
 class GeneralisedRomanNumber:
