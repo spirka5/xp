@@ -32,7 +32,7 @@ class GeneralisedRomanNumber:
     # Metóda vráti najväčšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. 3999
     def maximum(self):
-        max_number = self.letters[len(self.letters) - 1] + self.letters[0]
+        max_number = self.letters[0] + self.letters[len(self.letters) - 1]
         return romanToInteger(self.letters, max_number)
 
     # Metóda vráti najmenšie číslo, ktoré sa dá z daných
