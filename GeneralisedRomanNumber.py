@@ -1,4 +1,5 @@
-from skuska import romanToInteger
+import skuska as s
+
 
 DEFAULT_LETTERS = "-OIVXLCDM"
 
@@ -32,8 +33,8 @@ class GeneralisedRomanNumber:
     # Metóda vráti najväčšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. 3999
     def maximum(self):
-        max_number = self.letters[0] + self.letters[len(self.letters) - 1]
-        return romanToInteger(self.letters, max_number)
+        max_number = s.get_value_of_char(self.letters[len(self.letters) - 1]) * 4 - 1
+        return max_number
 
     # Metóda vráti najmenšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. -3999
