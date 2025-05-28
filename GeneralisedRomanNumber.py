@@ -1,3 +1,6 @@
+from skuska import romanToInteger
+
+
 class GeneralisedRomanNumber:
     def __init__(self, letters):
         if not self.are_letters_valid(letters):
@@ -28,7 +31,8 @@ class GeneralisedRomanNumber:
     # Metóda vráti najväčšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. 3999
     def maximum(self):
-        return 0
+        max_number = self.letters[len(self.letters) - 1] + self.leters[0]
+        return romanToInteger(self.letters, max_number)
 
     # Metóda vráti najmenšie číslo, ktoré sa dá z daných
     # písmen rímskej abecedy napísať. Napr. -3999
