@@ -1,5 +1,4 @@
 import skuska as s
-import math
 
 DEFAULT_LETTERS = "-OIVXLCDM"
 
